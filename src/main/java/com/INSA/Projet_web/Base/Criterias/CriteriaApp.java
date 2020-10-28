@@ -24,7 +24,7 @@ public class CriteriaApp implements Serializable {
     private Long crappid; //ID du critère de l'apprenti dans la base de données
     @OneToOne(orphanRemoval = true)
     private Apprentice apprentice; //L'apprenti qui emet ces critères
-    @OneToMany(orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Location> locations; //Emplacement souhaité du futur contrat
     @ElementCollection
     private List<Domains> domains; //Domaines dans lesquels il étudie/a étudié
@@ -33,6 +33,9 @@ public class CriteriaApp implements Serializable {
 
     //constructeur
     public CriteriaApp(){}
+    public CriteriaApp(Apprentice apprenti){
+        this.apprentice = apprenti;
+    }
     public CriteriaApp(Apprentice apprenti, List<Location> locations, List<Domains> domaines, int duree_min, int duree_max) {
         this.apprentice = apprenti;
         this.locations = locations;
@@ -84,14 +87,6 @@ public class CriteriaApp implements Serializable {
 
     public void setLocations(List<Location> locations) {
         this.locations = locations;
-    }
-
-    public List<Domains> getDomaines() {
-        return domains;
-    }
-
-    public void setDomaines(List<Domains> domaines) {
-        this.domains = domaines;
     }
 
     public int getDuree_min() {

@@ -53,16 +53,16 @@ class ProjetWebApplicationTests {
 		Long idapp=(long)1;
 		Apprentice testgetapp=appr.downloadapprentice(idapp);
 		List<Location> locationscrapp=new ArrayList<>();
-		locationscrapp.add(testgetapp.getLocation());
+		locationscrapp.add(new Location("Lille",59000));
 		List<Domains> domainscrapp=new ArrayList<>();
 		domainscrapp.add(Domains.INFO);
 		CriteriaApp criteria_apptest= new CriteriaApp(testgetapp,locationscrapp,domainscrapp,12,24);
-		appcrr.uploadappcriteria(criteria_apptest,testgetapp.getId());
+		appcrr.uploadappcriteria(criteria_apptest,idapp);
 	}
 
 	@Test
 	void testDelete(){
-		Long idapp=(long)1,idcrapp=(long)21;
+		Long idapp=(long)1;
 		Apprentice testgetapp=appr.downloadapprentice(idapp);
 		appr.deleteapprentice(testgetapp);
 	}

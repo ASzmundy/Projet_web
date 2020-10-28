@@ -51,31 +51,34 @@ alter table recruiter add constraint FKfinkljol68adsvllp6cm9ogek foreign key (cr
 alter table recruiter add constraint FK_lxoalky153xl7jivmv46an7lp foreign key (location_id_loc) references location
 alter table user add constraint FKrblarwvp4ghajqlmxu692h897 foreign key (location_id_loc) references location
 INSERT INTO LOCATION VALUES(2,75001,'Paris 1er Arrondissement',NULL)
-INSERT INTO APPRENTICE VALUES(1,'1995-02-15','Kevin','ktest@outlook.fr','Testman','069577033',2,'105 rue Pompidou',TRUE,'Developpeur',5,FALSE,NULL)
-INSERT INTO LANGUAGE VALUES(3,5,'Arabe')
+INSERT INTO CRITERIA_APP VALUES(3,0,0,NULL)
+INSERT INTO APPRENTICE VALUES(1,'1995-02-15','Kevin','ktest@outlook.fr','Testman','069577033',2,'105 rue Pompidou',TRUE,'Developpeur',5,FALSE,3)
+INSERT INTO LANGUAGE VALUES(4,5,'Arabe')
+DELETE FROM CRITERIA_APP WHERE CRAPPID=3
+INSERT INTO CRITERIA_APP VALUES(3,0,0,1)
 INSERT INTO APPRENTICE_DIPLOMAS VALUES(1,'Master sociologie')
 INSERT INTO APPRENTICE_EXPERIENCE VALUES(1,'Serveur macdo')
-INSERT INTO APPRENTICE_LANGUAGES VALUES(1,3)
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 4
+INSERT INTO APPRENTICE_LANGUAGES VALUES(1,4)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 5
 COMMIT
-DISCONNECT
-/*C3*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C4*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C5*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C6*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C7*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C8*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C9*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C11*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C10*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C9*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C8*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C7*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C6*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C5*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C4*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C3*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C12*/SET SCHEMA PUBLIC
 alter table apprentice_languages drop constraint UK_gdfpowg9fvi2ntugyj38o9fpa
@@ -88,7 +91,6 @@ alter table criteria_app_locations drop constraint UK_syp61xit4cfio3hfs1xq2xsd3
 alter table criteria_app_locations add constraint UK_syp61xit4cfio3hfs1xq2xsd3 unique (locations_id_loc)
 alter table criteria_rec_languages drop constraint UK_jbsqf8lv8f4j93e24cstruc7c
 alter table criteria_rec_languages add constraint UK_jbsqf8lv8f4j93e24cstruc7c unique (languages_id_lvl_lang)
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 5
 DISCONNECT
 /*C13*/SET SCHEMA PUBLIC
 DISCONNECT
@@ -119,7 +121,13 @@ alter table criteria_app_locations drop constraint UK_syp61xit4cfio3hfs1xq2xsd3
 alter table criteria_app_locations add constraint UK_syp61xit4cfio3hfs1xq2xsd3 unique (locations_id_loc)
 alter table criteria_rec_languages drop constraint UK_jbsqf8lv8f4j93e24cstruc7c
 alter table criteria_rec_languages add constraint UK_jbsqf8lv8f4j93e24cstruc7c unique (languages_id_lvl_lang)
+INSERT INTO LOCATION VALUES(5,59000,'Lille',NULL)
+DELETE FROM CRITERIA_APP WHERE CRAPPID=3
+INSERT INTO CRITERIA_APP VALUES(3,24,12,1)
+INSERT INTO CRITERIA_APP_DOMAINS VALUES(3,0)
+INSERT INTO CRITERIA_APP_LOCATIONS VALUES(3,5)
 ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 6
+COMMIT
 DISCONNECT
 /*C24*/SET SCHEMA PUBLIC
 DISCONNECT
@@ -150,7 +158,19 @@ alter table criteria_app_locations drop constraint UK_syp61xit4cfio3hfs1xq2xsd3
 alter table criteria_app_locations add constraint UK_syp61xit4cfio3hfs1xq2xsd3 unique (locations_id_loc)
 alter table criteria_rec_languages drop constraint UK_jbsqf8lv8f4j93e24cstruc7c
 alter table criteria_rec_languages add constraint UK_jbsqf8lv8f4j93e24cstruc7c unique (languages_id_lvl_lang)
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 7
+DELETE FROM CRITERIA_APP WHERE CRAPPID=3
+INSERT INTO CRITERIA_APP VALUES(3,24,12,NULL)
+DELETE FROM APPRENTICE_DIPLOMAS WHERE APPRENTICE_ID=1 AND DIPLOMAS='Master sociologie'
+DELETE FROM APPRENTICE_EXPERIENCE WHERE APPRENTICE_ID=1 AND EXPERIENCE='Serveur macdo'
+DELETE FROM APPRENTICE_LANGUAGES WHERE APPRENTICE_ID=1 AND LANGUAGES_ID_LVL_LANG=4
+DELETE FROM CRITERIA_APP_DOMAINS WHERE CRITERIA_APP_CRAPPID=3 AND DOMAINS=0
+DELETE FROM CRITERIA_APP_LOCATIONS WHERE CRITERIA_APP_CRAPPID=3 AND LOCATIONS_ID_LOC=5
+DELETE FROM LANGUAGE WHERE ID_LVL_LANG=4
+DELETE FROM APPRENTICE WHERE ID=1
+DELETE FROM LOCATION WHERE ID_LOC=2
+DELETE FROM LOCATION WHERE ID_LOC=5
+DELETE FROM CRITERIA_APP WHERE CRAPPID=3
+COMMIT
 DISCONNECT
 /*C34*/SET SCHEMA PUBLIC
 DISCONNECT
@@ -181,10 +201,16 @@ alter table criteria_app_locations drop constraint UK_syp61xit4cfio3hfs1xq2xsd3
 alter table criteria_app_locations add constraint UK_syp61xit4cfio3hfs1xq2xsd3 unique (locations_id_loc)
 alter table criteria_rec_languages drop constraint UK_jbsqf8lv8f4j93e24cstruc7c
 alter table criteria_rec_languages add constraint UK_jbsqf8lv8f4j93e24cstruc7c unique (languages_id_lvl_lang)
-INSERT INTO CRITERIA_APP VALUES(7,24,12,1)
-INSERT INTO CRITERIA_APP_DOMAINS VALUES(7,0)
-INSERT INTO CRITERIA_APP_LOCATIONS VALUES(7,2)
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 8
+INSERT INTO LOCATION VALUES(7,75001,'Paris 1er Arrondissement',NULL)
+INSERT INTO CRITERIA_APP VALUES(8,0,0,NULL)
+INSERT INTO APPRENTICE VALUES(6,'1995-02-15','Kevin','ktest@outlook.fr','Testman','069577033',7,'105 rue Pompidou',TRUE,'Developpeur',5,FALSE,8)
+INSERT INTO LANGUAGE VALUES(9,5,'Arabe')
+DELETE FROM CRITERIA_APP WHERE CRAPPID=8
+INSERT INTO CRITERIA_APP VALUES(8,0,0,6)
+INSERT INTO APPRENTICE_DIPLOMAS VALUES(6,'Master sociologie')
+INSERT INTO APPRENTICE_EXPERIENCE VALUES(6,'Serveur macdo')
+INSERT INTO APPRENTICE_LANGUAGES VALUES(6,9)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 10
 COMMIT
 DISCONNECT
 /*C44*/SET SCHEMA PUBLIC
@@ -204,34 +230,4 @@ DISCONNECT
 /*C51*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C52*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C53*/SET SCHEMA PUBLIC
-alter table apprentice_languages drop constraint UK_gdfpowg9fvi2ntugyj38o9fpa
-alter table apprentice_languages add constraint UK_gdfpowg9fvi2ntugyj38o9fpa unique (languages_id_lvl_lang)
-alter table company_locations drop constraint UK_e55y88ecs1c6ep6e9iwmfkbb2
-alter table company_locations add constraint UK_e55y88ecs1c6ep6e9iwmfkbb2 unique (locations_id_loc)
-alter table company_recruiters drop constraint UK_srkxcucbjsq3nh9gw9dvxckry
-alter table company_recruiters add constraint UK_srkxcucbjsq3nh9gw9dvxckry unique (recruiters_id)
-alter table criteria_app_locations drop constraint UK_syp61xit4cfio3hfs1xq2xsd3
-alter table criteria_app_locations add constraint UK_syp61xit4cfio3hfs1xq2xsd3 unique (locations_id_loc)
-alter table criteria_rec_languages drop constraint UK_jbsqf8lv8f4j93e24cstruc7c
-alter table criteria_rec_languages add constraint UK_jbsqf8lv8f4j93e24cstruc7c unique (languages_id_lvl_lang)
-DISCONNECT
-/*C54*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C55*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C56*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C57*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C58*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C59*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C60*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C61*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C62*/SET SCHEMA PUBLIC
 DISCONNECT

@@ -2,6 +2,7 @@ package com.INSA.Projet_web.Services;
 
 import com.INSA.Projet_web.Base.Criterias.CriteriaApp;
 import com.INSA.Projet_web.Base.Users.Apprentice;
+import com.INSA.Projet_web.Repos.ApprenticeRepo;
 import com.INSA.Projet_web.Repos.CriteriaAppRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Service
 @Path("/appcriterias")
@@ -22,21 +24,23 @@ public class AppCriteriaResource {
     @Autowired
    private CriteriaAppRepo repo;
     @Autowired
-    private ApprenticeResource ressourceapp;
+    private ApprenticeRepo apprenticeRepo;
 
     @POST
-    public void uploadappcriteria(CriteriaApp criteria_app, Long id_app){
-        //Apprentice app=ressourceapp.downloadapprentice(id_app);
-        //app.setCriteria(criteria_app);
-        repo.save(criteria_app);
-        //J'aimerais mettre à jour l'apprenti concerné ici
+    public Response uploadappcriteria(CriteriaApp criteria_app,Long id_app){
+        CriteriaApp crapp= repo.findCriteriaAppByApprentice(apprenticeRepo.findApprenticeByid(id_app));
+        crapp.setDuree_min(criteria_app.getDuree_min());
+        crapp.setDuree_max(criteria_app.getDuree_max());
+        crapp.setDomains(criteria_app.getDomains());
+        crapp.setLocations(criteria_app.getLocations());
+        repo.save(crapp);
+        return Response.ok().build();
     }
 
     @GET
     @Path("/{ID_CrApp}")
     public CriteriaApp downloadCriteriaApp(@PathParam("ID_CrApp") Long id_crapp){
-        if(repo.existsById(id_crapp)) return repo.findById(id_crapp).get();
-        else return null;
+        return repo.findById(id_crapp).get();
     }
 
     public void deleteCriteriaApp(Long id_crapp){

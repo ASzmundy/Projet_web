@@ -28,7 +28,7 @@ public class Apprentice extends User implements Serializable {
     @ElementCollection
     private List<String> experience; //Expérience professionnelle de l'apprenti
     private String projet_pro; //Projet professionnel de l'apprenti
-    @OneToOne(cascade=CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade=CascadeType.PERSIST, orphanRemoval = true)
     private CriteriaApp criteria; //Critères de l'apprenti
 
 
@@ -44,6 +44,7 @@ public class Apprentice extends User implements Serializable {
         this.languages = languages;
         this.experience = experience;
         this.projet_pro = projet_pro;
+        this.criteria=new CriteriaApp(this);
     }
     //getters/setters
     public StudiesLvl getStudieslvl() {
