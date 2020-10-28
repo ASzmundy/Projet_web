@@ -66,6 +66,6 @@ class ProjetWebApplicationTests {
 		Long idapp=(long)18,idcrapp=(long)21;
 		Apprentice testgetapp=appr.downloadapprentice(idapp);
 		appr.deleteapprentice(testgetapp);
-		//appcrr.deleteCriteriaApp(idcrapp);
+		appcrr.deleteCriteriaApp(idcrapp);
 	}
 }

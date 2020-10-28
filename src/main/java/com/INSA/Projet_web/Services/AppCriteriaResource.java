@@ -1,6 +1,7 @@
 package com.INSA.Projet_web.Services;
 
 import com.INSA.Projet_web.Base.Criterias.CriteriaApp;
+import com.INSA.Projet_web.Base.Users.Apprentice;
 import com.INSA.Projet_web.Repos.CriteriaAppRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,10 +26,10 @@ public class AppCriteriaResource {
 
     @POST
     public void uploadappcriteria(CriteriaApp criteria_app, Long id_app){
-        ressourceapp.downloadapprentice(id_app)
-        criteria_app.setApprentice();
-
+        Apprentice app=ressourceapp.downloadapprentice(id_app);
+        app.setCriteria(criteria_app);
         repo.save(criteria_app);
+        //J'aimerais mettre à jour l'apprenti concerné ici
     }
 
     @GET
