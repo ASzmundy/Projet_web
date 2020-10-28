@@ -42,7 +42,6 @@ class ProjetWebApplicationTests {
 				new ArrayList<String>(),
 				"Developpeur"
 		);
-
 		testapp.getLanguages().add(new Language("Arabe", LangueLvl.C2));
 		testapp.getDiplomas().add("Master sociologie");
 		testapp.getExperience().add("Serveur macdo");
@@ -51,7 +50,7 @@ class ProjetWebApplicationTests {
 
 	@Test
 	void testUploadCriteria(){
-		Long idapp=(long)18;
+		Long idapp=(long)1;
 		Apprentice testgetapp=appr.downloadapprentice(idapp);
 		List<Location> locationscrapp=new ArrayList<>();
 		locationscrapp.add(testgetapp.getLocation());
@@ -63,9 +62,8 @@ class ProjetWebApplicationTests {
 
 	@Test
 	void testDelete(){
-		Long idapp=(long)18,idcrapp=(long)21;
+		Long idapp=(long)1,idcrapp=(long)21;
 		Apprentice testgetapp=appr.downloadapprentice(idapp);
 		appr.deleteapprentice(testgetapp);
-		appcrr.deleteCriteriaApp(idcrapp);
 	}
 }

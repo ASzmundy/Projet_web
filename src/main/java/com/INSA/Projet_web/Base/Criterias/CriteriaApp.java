@@ -4,6 +4,7 @@ import com.INSA.Projet_web.Base.Intermediary.Enums.Domains;
 import com.INSA.Projet_web.Base.Intermediary.Location;
 import com.INSA.Projet_web.Base.Users.Apprentice;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -21,9 +22,9 @@ public class CriteriaApp implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long crappid; //ID du critère de l'apprenti dans la base de données
-    @OneToOne
+    @OneToOne(orphanRemoval = true)
     private Apprentice apprentice; //L'apprenti qui emet ces critères
-    @OneToMany
+    @OneToMany(orphanRemoval = true)
     private List<Location> locations; //Emplacement souhaité du futur contrat
     @ElementCollection
     private List<Domains> domains; //Domaines dans lesquels il étudie/a étudié

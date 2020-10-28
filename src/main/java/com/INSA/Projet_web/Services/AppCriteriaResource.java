@@ -26,8 +26,8 @@ public class AppCriteriaResource {
 
     @POST
     public void uploadappcriteria(CriteriaApp criteria_app, Long id_app){
-        Apprentice app=ressourceapp.downloadapprentice(id_app);
-        app.setCriteria(criteria_app);
+        //Apprentice app=ressourceapp.downloadapprentice(id_app);
+        //app.setCriteria(criteria_app);
         repo.save(criteria_app);
         //J'aimerais mettre à jour l'apprenti concerné ici
     }
