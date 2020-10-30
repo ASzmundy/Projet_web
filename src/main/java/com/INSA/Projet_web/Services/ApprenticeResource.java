@@ -1,5 +1,6 @@
 package com.INSA.Projet_web.Services;
 
+import com.INSA.Projet_web.Base.Criterias.CriteriaApp;
 import com.INSA.Projet_web.Base.Users.Apprentice;
 import com.INSA.Projet_web.Repos.ApprenticeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,12 @@ public class ApprenticeResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response uploadapprentice(Apprentice apprentice){
+    public Response uploadapprentice(Apprentice apprentice) {
+        apprentice.setCriteria(new CriteriaApp(apprentice));
         repo.save(apprentice);
         return Response.ok().build();
     }
+
 
     @GET
     @Path("/{ID_app}")

@@ -1,6 +1,7 @@
 package com.INSA.Projet_web.Base.Users;
 
 import com.INSA.Projet_web.Base.Intermediary.Location;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,13 +16,14 @@ import java.util.List;
 public class Company {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id_company; //ID de l'entreprise dans la base de données
+    private Long idcompany; //ID de l'entreprise dans la base de données
     private String name; //Nom de l'entreprise
     @OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
     private List<Location> locations; //Emplacements où l'entreprise est présente
     private String siret; //SIRET de l'entreprise
     private String siren; //SIREN de l'entreprise
     @OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Recruiter> recruiters; //Recruteurs de l'entreprise
 
     //constructeur
@@ -68,12 +70,12 @@ public class Company {
         this.recruiters = recruiters;
     }
 
-    public Long getId_company() {
-        return id_company;
+    public Long getIdcompany() {
+        return idcompany;
     }
 
-    public void setId_company(Long id_company) {
-        this.id_company = id_company;
+    public void setIdcompany(Long id_company) {
+        this.idcompany = id_company;
     }
 
     public void setSiret(String siret) {

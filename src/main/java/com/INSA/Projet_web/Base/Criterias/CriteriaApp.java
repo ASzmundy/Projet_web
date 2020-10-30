@@ -5,7 +5,6 @@ import com.INSA.Projet_web.Base.Intermediary.Location;
 import com.INSA.Projet_web.Base.Users.Apprentice;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +20,7 @@ import java.util.List;
 public class CriteriaApp implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long crappid; //ID du critère de l'apprenti dans la base de données
+    private Long crappid; //ID du critère dans la base de données
     @OneToOne(orphanRemoval = true)
     private Apprentice apprentice; //L'apprenti qui emet ces critères
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
@@ -45,6 +44,15 @@ public class CriteriaApp implements Serializable {
     }
 
     //getters/setters
+
+    public Long getCrappid() {
+        return crappid;
+    }
+
+    public void setCrappid(Long crappid) {
+        this.crappid = crappid;
+    }
+
     public Apprentice getApprentice() {
         return apprentice;
     }
@@ -73,10 +81,6 @@ public class CriteriaApp implements Serializable {
         return duration_max;
     }
 
-    public void setId(Long ID_CrApp) {
-        this.crappid = ID_CrApp;
-    }
-
     public void setDuration_max(int duration_max) {
         this.duration_max = duration_max;
     }
@@ -89,23 +93,4 @@ public class CriteriaApp implements Serializable {
         this.locations = locations;
     }
 
-    public int getDuree_min() {
-        return duration_min;
-    }
-
-    public void setDuree_min(int duree_min) {
-        this.duration_min = duree_min;
-    }
-
-    public int getDuree_max() {
-        return duration_max;
-    }
-
-    public void setDuree_max(int duree_max) {
-        this.duration_max = duree_max;
-    }
-
-    public Long getId() {
-        return crappid;
-    }
 }

@@ -5,6 +5,7 @@ import com.INSA.Projet_web.Base.Intermediary.Enums.StudiesLvl;
 import com.INSA.Projet_web.Base.Intermediary.Language;
 import com.INSA.Projet_web.Base.Users.Recruiter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,8 +21,8 @@ import java.util.List;
 public class CriteriaRec {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    Long ID_CRep; //ID du critère recruteur dans la base de données
-    @OneToOne
+    private Long crrecid; //ID du critère recruteur dans la base de données
+    @OneToOne(orphanRemoval = true)
     private Recruiter recruiter; //Le recruteur qui emet ces critères
     @ElementCollection
     private List<Domains> domains; //les domaines souhaités
@@ -29,13 +30,16 @@ public class CriteriaRec {
     private List<StudiesLvl> studiesLvls; //Le niveau de formation souhaité
     private int duration_min; //La durée minimale du contrat qu'il peut proposer (en mois)
     private int duration_max;//La durée maximale du contrat qu'il peut proposer (en mois)
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Language> languages; //Les langues souhaités
     private boolean permisb; //Veut-il un apprenti ayant le permis B ?
     private boolean vehicule; //Veut-il un apprenti possédant un véhicule ?
 
     //constructeur
     public CriteriaRec(){};
+    public CriteriaRec(Recruiter recruiter){
+        this.recruiter=recruiter;
+    }
     public CriteriaRec(Recruiter recruteur, List<Domains> domaines, List<StudiesLvl> niveauformation, int duree_min, int duree_max, List<Language> languages, boolean permisb, boolean vehicule) {
         this.recruiter = recruteur;
         this.domains = domaines;
@@ -48,72 +52,14 @@ public class CriteriaRec {
     }
 
     //Getters/setters
-    public Recruiter getRecruteur() {
-        return recruiter;
+
+
+    public Long getCrrecid() {
+        return crrecid;
     }
 
-    public List<Domains> getDomaines() {
-        return domains;
-    }
-
-    public void setDomaines(List<Domains> domaines) {
-        this.domains = domaines;
-    }
-
-    public List<StudiesLvl> getNiveauformation() {
-        return studiesLvls;
-    }
-
-    public void setNiveauformation(List<StudiesLvl> niveauformation) {
-        this.studiesLvls = niveauformation;
-    }
-
-    public int getDuree_min() {
-        return duration_min;
-    }
-
-    public void setDuree_min(int duree_min) {
-        this.duration_min = duree_min;
-    }
-
-    public int getDuree_max() {
-        return duration_max;
-    }
-
-    public void setDuree_max(int duree_max) {
-        this.duration_max = duree_max;
-    }
-
-    public List<Language> getLangues() {
-        return languages;
-    }
-
-    public void setLangues(List<Language> languages) {
-        this.languages = languages;
-    }
-
-    public boolean isPermisb() {
-        return permisb;
-    }
-
-    public void setPermisb(boolean permisb) {
-        this.permisb = permisb;
-    }
-
-    public boolean isVehicule() {
-        return vehicule;
-    }
-
-    public void setVehicule(boolean vehicule) {
-        this.vehicule = vehicule;
-    }
-
-    public Long getID_CRep() {
-        return ID_CRep;
-    }
-
-    public void setID_CRep(Long ID_CRep) {
-        this.ID_CRep = ID_CRep;
+    public void setCrrecid(Long ID_CRep) {
+        this.crrecid = ID_CRep;
     }
 
     public Recruiter getRecruiter() {
@@ -164,5 +110,19 @@ public class CriteriaRec {
         this.languages = languages;
     }
 
+    public boolean isPermisb() {
+        return permisb;
+    }
 
+    public void setPermisb(boolean permisb) {
+        this.permisb = permisb;
+    }
+
+    public boolean isVehicule() {
+        return vehicule;
+    }
+
+    public void setVehicule(boolean vehicule) {
+        this.vehicule = vehicule;
+    }
 }

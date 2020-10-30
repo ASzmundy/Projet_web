@@ -1,7 +1,6 @@
 package com.INSA.Projet_web.Services;
 
 import com.INSA.Projet_web.Base.Criterias.CriteriaApp;
-import com.INSA.Projet_web.Base.Users.Apprentice;
 import com.INSA.Projet_web.Repos.ApprenticeRepo;
 import com.INSA.Projet_web.Repos.CriteriaAppRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +21,17 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 public class AppCriteriaResource {
     @Autowired
-   private CriteriaAppRepo repo;
+     private CriteriaAppRepo repo;
     @Autowired
     private ApprenticeRepo apprenticeRepo;
 
     @POST
-    public Response uploadappcriteria(CriteriaApp criteria_app,Long id_app){
-        CriteriaApp crapp= repo.findCriteriaAppByApprentice(apprenticeRepo.findApprenticeByid(id_app));
-        crapp.setDuree_min(criteria_app.getDuree_min());
-        crapp.setDuree_max(criteria_app.getDuree_max());
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response uploadappcriteria(CriteriaApp criteria_app){
+        CriteriaApp crapp= repo.findCriteriaAppByApprentice(criteria_app.getApprentice());
+        crapp.setDuration_min(criteria_app.getDuration_min());
+        crapp.setDuration_max(criteria_app.getDuration_max());
         crapp.setDomains(criteria_app.getDomains());
         crapp.setLocations(criteria_app.getLocations());
         repo.save(crapp);
@@ -41,11 +42,6 @@ public class AppCriteriaResource {
     @Path("/{ID_CrApp}")
     public CriteriaApp downloadCriteriaApp(@PathParam("ID_CrApp") Long id_crapp){
         return repo.findById(id_crapp).get();
-    }
-
-    public void deleteCriteriaApp(Long id_crapp){
-        CriteriaApp crapp=repo.findCriteriaAppByCrappid(id_crapp);
-        repo.delete(crapp);
     }
 
 }

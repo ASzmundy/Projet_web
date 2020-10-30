@@ -4,6 +4,7 @@ import com.INSA.Projet_web.Base.Criterias.CriteriaApp;
 import com.INSA.Projet_web.Base.Intermediary.Enums.StudiesLvl;
 import com.INSA.Projet_web.Base.Intermediary.Language;
 import com.INSA.Projet_web.Base.Intermediary.Location;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
@@ -29,6 +30,7 @@ public class Apprentice extends User implements Serializable {
     private List<String> experience; //Expérience professionnelle de l'apprenti
     private String projet_pro; //Projet professionnel de l'apprenti
     @OneToOne(cascade=CascadeType.PERSIST, orphanRemoval = true)
+    @JsonIgnore
     private CriteriaApp criteria; //Critères de l'apprenti
 
 
