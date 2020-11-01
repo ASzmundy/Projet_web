@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8"/>
+		<link rel="stylesheet" href="profil.css"/>
+		<title>SchoolJob</title>
+	</head>
+	
+	<body>
+		<div class="header">
+			<a href="rechercheRecruteur.html">Recherche</a>
+		</div>
+		<div>
+		<p>
+		<h1>Mes critères</h1>
+		<div class="center-div">
+		    <ul><label>Niveau d'études<label/>:<select type="text" id="studiesLvl">
+				<option value="CAP">CAP</option>
+				<option value="BAC">BAC</option>
+				<option value="BAC2">BAC+2 (DUT 2,BTS 2,Licence 2)</option>
+				<option value="BAC3">BAC+3 (Licence 3)</option>
+				<option value="BAC4">BAC+4 (Master 1)</option>
+				<option value="BAC5">BAC+5 (Master 2)</option>
+				<option value="BAC6">BAC+6</option>
+				<option value="BAC7">BAC+7</option>
+				<option value="BAC8">BAC+8</option>
+			</select></ul>
+			<ul><label>Domaine d'études<label/>:<input type="text" id="domaine"/></ul>
+			<ul><label>Durée de contrat minimum<label/>:<input type="text" id="duree_min"/></ul>
+			<ul><label>Durée de contrat maximum<label/>:<input type="text" id="duree_max"/></ul>
+			<ul><label>Langue<label/>:<input type="text" id="languagename"/></ul>
+			<ul><label>Niveau Langue<label/>:<select type="text" id="languagelvl"/>
+				<option value="A1">A1</option>
+				<option value="A2">A2</option>
+				<option value="B1">B1</option>
+				<option value="B2">B2</option>
+				<option value="C1">C1</option>
+				<option value="C2">C2</option>
+			</select></ul>
+			<ul><label>Titulaire du permis B ?<label/><input type="checkbox" id="permisb"/></ul>
+			<ul><label>véhiculé ?<label/><input type="checkbox" id="vehicule"/></ul>
+			<ul><input type="button" value="Enregistrer" id="btn" />
+		</div>
+		</p>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="postcriteriarec.js"></script>
+	</body>

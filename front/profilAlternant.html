@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8"/>
+		<link rel="stylesheet" href="profil.css"/>
+		<title>SchoolJob</title>
+	</head>
+	
+	<body>
+		<div class="header">
+			<a href="rechercheAlternant.html">Recherche</a>
+		</div>
+		<div>
+		<p>
+		<h1>Mes critères</h1>
+		<div class="center-div">
+		    <ul><label>Localisations (séparés par des ;)<label/>:<input type="text" id="locationname"/></ul>
+			<ul><label>Domaine(s) d'étude (séparés par des ;)<label/>:<input type="text" id="domaine"/></ul>
+			<ul><label>Durée de contrat minimale<label/>:<input type="text" id="dureemin"/></ul>
+			<ul><label>Durée de contrat maximale<label/>:<input type="text" id="dureemax"/></ul>
+			<ul><input type="button" value="Enregistrer" id="btn"/>
+		</div>
+		</p>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="postcriteriaapp.js"></script>
+	</body>

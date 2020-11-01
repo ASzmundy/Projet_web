@@ -38,6 +38,13 @@ public class ApprenticeResource {
             return repo.findApprenticeByid(id_app);
     }
 
+    @GET
+    @Path("/mailapp/{mail}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getidfrommail(@PathParam("mail") String mail){
+        return repo.findIdByMail(mail).get(0).toString();
+    }
+
     public Response deleteapprentice(Apprentice apprentice){
         repo.delete(apprentice);
         return Response.ok().build();

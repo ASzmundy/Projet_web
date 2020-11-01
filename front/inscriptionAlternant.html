@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8"/>
+		<link rel="stylesheet" href="inscription.css"/>
+		<title>SchoolJob</title>
+	</head>
+	
+	<body>
+		<div>
+		<p>
+		<h1>Bienvenue sur SchoolJob</h1>
+		<h2>Inscription</h2>
+    		<form action="/" class="forminscription">
+			<div class="center-div">
+    				<ul><label>Nom<label/>:<input type="text" id="name"/></ul>
+				<ul><label>Prénom<label/>:<input type="text" id="firstname"/></ul>
+				<ul><label>Date de naissance<label/>:<input type="date" id="birthday"/></ul>
+				<ul><label>Adresse Mail<label/>:<input type="text" id="mail"/></ul>
+  				<ul><label>Numéro de téléphone<label/>:<input type="text" id="phonenum"/></ul>
+  				<ul><label>Adresse<label/>:<input type="text" id="address"/></ul>
+   				<ul><label>Ville<label/>:<input type="text" id="locationname"/></ul>
+    				<ul><label>Code postal<label/>:<input type="text" id="locationcp"/></ul>
+    				<ul><label>Niveau d'études<label/>:
+				<select type="text" id="studiesLvl">
+    					<option value="CAP">CAP</option>
+      					<option value="BAC">BAC</option>
+      					<option value="BAC2">BAC+2 (DUT 2,BTS 2,Licence 2)</option>
+      					<option value="BAC3">BAC+3 (Licence 3)</option>
+      					<option value="BAC4">BAC+4 (Master 1)</option>
+      					<option value="BAC5">BAC+5 (Master 2)</option>
+      					<option value="BAC6">BAC+6</option>
+      					<option value="BAC7">BAC+7</option>
+      					<option value="BAC8">BAC+8</option>
+    				</select></ul>
+    				<ul><label>Diplômes (séparés par des points virgules)<label/>:<input type="text" id="diplomasstring"/></ul>
+    				<ul><label>Langue maternelle<label/>:<input type="text" id="languagename"/></ul>
+   				<ul><label>Avez vous le permis B ?<label/><input type="checkbox" id="permisb"/></ul>
+   				<ul><label>Êtes vous véhiculé ?<label/><input type="checkbox" id="vehicule"/></ul>
+   				<ul><label>Expérience (postes séparés par des points virgules)<label/>:<input type="text" id="experiencestring"/>
+   				<ul><label>Projet professionnel<label/>:<input type="text" id="projet_pro"/></ul>
+				<ul><input type="button" value="Valider" id="btn"/>
+			</div>
+    		</form>
+		</p>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="inscriptionapp.js"></script>
+	</body>
+</html>

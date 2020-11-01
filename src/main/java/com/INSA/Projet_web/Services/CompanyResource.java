@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/companies")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class CompanyRessource {
+public class CompanyResource {
     private CompanyRepo repo;
     @POST
     public void uploadcompany(Company company){

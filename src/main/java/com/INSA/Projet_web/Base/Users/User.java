@@ -4,6 +4,7 @@ import com.INSA.Projet_web.Base.Intermediary.Location;
 
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,7 @@ public class User {
     private String name; //Nom de la personne
     private String firstname; //Prénom de la personne
     private LocalDate birthday; //sa date de naissance
+    @Column(unique = true)
     private String mail; //son adresse mail
     private String phonenum; //son numéro de téléphone
     @ManyToOne(cascade= CascadeType.ALL)

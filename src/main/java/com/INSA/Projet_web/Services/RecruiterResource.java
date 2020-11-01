@@ -39,6 +39,13 @@ public class RecruiterResource {
             return repo.findById(id_rec).get();
     }
 
+    @GET
+    @Path("/mailrec/{mail}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getidfrommail(@PathParam("mail") String mail){
+        return repo.findIdByMail(mail).get(0).toString();
+    }
+
     public Response deleterecruiter(Recruiter recruiter){
         repo.delete(recruiter);
         return Response.ok().build();

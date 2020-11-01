@@ -15,10 +15,10 @@ import javax.ws.rs.ApplicationPath;
 public class JerseyConfiguration extends ResourceConfig {
     public JerseyConfiguration(){
         register(ApprenticeResource.class);
-        register(LanguageResource.class);
-        register(CompanyRessource.class);
+        register(CompanyResource.class);
         register(AppCriteriaResource.class);
         register(RecruiterResource.class);
         register(RecruitCriteriaResource.class);
+        register(CORSFilter.class);
     }
 }
